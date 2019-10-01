@@ -47,17 +47,21 @@ public class UserPresenter extends SQLiteOpenHelper {
     }
 
     public String insertUserStatus(Boolean inputResult,String user){
-        String userStatus="User "+user+" Gagal Di Import";
-        if(inputResult){}else{
-            userStatus="User "+user+" Berhasil Di Import";
+        String userStatus="";
+        if(inputResult){
+            userStatus = "User "+user+" sudah ada";
+        }else{
+            userStatus="User "+user+" Berhasil diimport";
         }
         return userStatus;
     }
 
     public String createTableUserStatus(Boolean inputResult,String table){
-        String userStatus="User "+table+" Gagal Di Create";
-        if(inputResult){}else{
-            userStatus="User "+table+" Berhasil Di Create";
+        String userStatus="User "+table+" Gagal dicreate";
+        if(inputResult){
+
+        }else{
+            userStatus="User "+table+" Berhasil dicreate";
         }
         return userStatus;
     }
