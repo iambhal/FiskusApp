@@ -64,16 +64,33 @@ public class PreconfigActivity extends AppCompatActivity {
         if (!cekCountTable) {
 
             SQLiteDatabase db = userHelper.getReadableDatabase();
-            ContentValues values=new ContentValues();
+            ContentValues[] values=new ContentValues[10];
             insertUser = true;
-            values.put("user","060105300");
-            values.put("password","alisyahbani");
-            values.put("nip19","198405152003121004");
-            values.put("nama","Ikhsan Alisyahbani");
-            values.put("unitkerja","Direktorat Teknologi Informasi dan Komunikasi");
-            values.put("jabatan","PRAKOM");
+            values[0].put("user","060105300");
+            values[0].put("password","alisyahbani");
+            values[0].put("nip19","198405152003121004");
+            values[0].put("nama","Ikhsan Alisyahbani");
+            values[0].put("unitkerja","Direktorat Teknologi Informasi dan Komunikasi");
+            values[0].put("jabatan","Pranata Komputer Pertama");
 
-            try{db.insert(userHelper.TABLE_NAME,null,values);}
+            values[1].put("user","863601110");
+            values[2].put("password","hambali");
+            values[3].put("nip19","198205032009011010");
+            values[4].put("nama","Achmad Hambali");
+            values[5].put("unitkerja","Direktorat Teknologi Informasi dan Komunikasi");
+            values[6].put("jabatan","Pranata Komputer Pertama");
+
+            values[1].put("user","060103804");
+            values[2].put("password","budi");
+            values[3].put("nip19","197804212002121002");
+            values[4].put("nama","Budi Sugiharto");
+            values[5].put("unitkerja","Direktorat Teknologi Informasi dan Komunikasi");
+            values[6].put("jabatan","Pranata Komputer Muda");
+
+            try{
+                for (int i=0; i<values.length; i++)
+                db.insert(userHelper.TABLE_NAME,null,values[0]);
+            }
             catch (SQLiteException sqlException) {
                 insertUser=false;
             }
@@ -119,4 +136,7 @@ public class PreconfigActivity extends AppCompatActivity {
         });
 
     }
+
+
+
 }
