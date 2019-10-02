@@ -91,6 +91,21 @@ public class UserHelper extends SQLiteOpenHelper {
         );
     }
 
+    public UserModel findUser(String id, String key){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor=db.query(TABLE_NAME, new String[]{KEY_ID,KEY_NIP9,KEY_PASSWORD,KEY_NIP19,KEY_NAMA,KEY_UNITKERJA,KEY_JABATAN},
+                id+"=?", new String[]{String.valueOf(key)},null,null,null);
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+
+        return new UserModel(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1),cursor.getString(2),
+                cursor.getString(3),cursor.getString(4),
+                cursor.getString(5),cursor.getString(6)
+        );
+    }
+
     public List<UserModel> findAll(){
         List<UserModel> listUserModels =new ArrayList<UserModel>();
         String query="SELECT * FROM "+ TABLE_NAME;

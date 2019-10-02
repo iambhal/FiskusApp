@@ -1,12 +1,18 @@
 package id.go.pajak.fiskusapp;
 
-import android.app.Activity;
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,14 +23,13 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import id.go.pajak.fiskusapp.models.UserHelper;
-import id.go.pajak.fiskusapp.models.UserModel;
-import id.go.pajak.fiskusapp.presenters.UserPresenter;
-import id.go.pajak.fiskusapp.views.UserView;
+import id.go.pajak.fiskusapp.views.CariWP;
 import id.go.pajak.fiskusapp.views.HelpView;
-import id.go.pajak.fiskusapp.views.HomeView;
-import id.go.pajak.fiskusapp.views.ShareView;
+import id.go.pajak.fiskusapp.views.CariPegawaiView;
+import id.go.pajak.fiskusapp.views.CekKepatuhan;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
     TextView tvNama;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         UserHelper userHelper= new UserHelper(this);
 
@@ -76,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         if(setupNavDrawer(navigationView)){
             setupNavDrawer(navigationView);
         }else {
-            Fragment fragment = new HomeView();
+            Fragment fragment = new CariPegawaiView();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
         }
@@ -94,22 +99,22 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = new HomeView();
+                Fragment fragment = new CariPegawaiView();
                 switch (item.getItemId()){
                     case R.id.nav_home:
-                        fragment = new HomeView();
+                        fragment = new CariPegawaiView();
                         break;
                     case R.id.nav_gallery:
-                        fragment = new UserView();
+                        fragment = new CariWP();
                         break;
                     case R.id.nav_share:
-                        fragment = new ShareView();
+                        fragment = new CekKepatuhan();
                         break;
                     case R.id.nav_help:
                         fragment = new HelpView();
                         break;
                     default:
-                        fragment = new HomeView();
+                        fragment = new CariPegawaiView();
                 }
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
@@ -142,4 +147,6 @@ public class MainActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         drawerToggle.syncState();
     }
+
+
 }

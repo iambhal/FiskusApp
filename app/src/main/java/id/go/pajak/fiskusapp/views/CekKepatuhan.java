@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 
 import id.go.pajak.fiskusapp.R;
 
-public class ShareView extends Fragment {
+public class CekKepatuhan extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_share, container, false);
+        View view = inflater.inflate(R.layout.fragment_cek_kepatuhan, container, false);
 
         return view;
     }

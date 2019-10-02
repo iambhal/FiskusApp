@@ -4,40 +4,27 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
-import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpResponseException;
 import org.ksoap2.transport.HttpTransportSE;
-import org.ksoap2.transport.ServiceConnection;
-import org.kxml2.io.KXmlParser;
-import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
 import id.go.pajak.fiskusapp.MyXmlPullParser;
 import id.go.pajak.fiskusapp.R;
 
-public class HomeView extends Fragment {
+public class CariPegawaiView extends Fragment {
 
     Button cari;
     TextView txNama, txCari;
@@ -55,7 +42,7 @@ public class HomeView extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_home, container, false);
+            View view = inflater.inflate(R.layout.fragment_cari_pegawai, container, false);
 
             cari = view.findViewById(R.id.btCari);
             txNama = view.findViewById(R.id.txNama);
