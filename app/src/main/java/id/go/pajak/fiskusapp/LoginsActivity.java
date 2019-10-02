@@ -103,6 +103,7 @@ public class LoginsActivity extends AppCompatActivity {
     }
 
     private void showWriteExternalPermission() {
+
         int permissionCheck = ContextCompat.checkSelfPermission(
                 this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -111,9 +112,10 @@ public class LoginsActivity extends AppCompatActivity {
                 showExplanation("Permission Needed", "Rationale", Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUEST_PERMISSION_WRITE_EXTERNAL);
             } else {
                 requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUEST_PERMISSION_WRITE_EXTERNAL);
+                requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_WRITE_EXTERNAL);
             }
         } else {
-            Toast.makeText(LoginsActivity.this, "Permission (already) Granted!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginsActivity.this, "Permission (already) Granted!", Toast.LENGTH_SHORT).show();
         }
     }
 

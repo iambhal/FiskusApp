@@ -24,13 +24,13 @@
         <EditText
             android:id="@+id/txCari"
             android:layout_width="181dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
             android:ems="10"
             android:inputType="number"
             android:maxLength="9"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.43"
+            app:layout_constraintHorizontal_bias="0.304"
             app:layout_constraintStart_toEndOf="@+id/tvNIP18"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -62,11 +62,12 @@
 
         <TextView
             android:id="@+id/txNama"
-            android:layout_width="317dp"
-            android:layout_height="336dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="382dp"
+            android:layout_height="341dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
             android:text="Data Pegawai:"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import id.go.pajak.fiskusapp.models.UserHelper;
+import id.go.pajak.fiskusapp.models.UserModel;
 import id.go.pajak.fiskusapp.presenters.UserPresenter;
 
 public class PreconfigActivity extends AppCompatActivity {
@@ -64,32 +65,18 @@ public class PreconfigActivity extends AppCompatActivity {
         if (!cekCountTable) {
 
             SQLiteDatabase db = userHelper.getReadableDatabase();
-            ContentValues[] values=new ContentValues[10];
+//            ContentValues[] values=new ContentValues[10];
+            UserModel[] user = new UserModel[3];
+            int i = 0;
             insertUser = true;
-            values[0].put("user","060105300");
-            values[0].put("password","alisyahbani");
-            values[0].put("nip19","198405152003121004");
-            values[0].put("nama","Ikhsan Alisyahbani");
-            values[0].put("unitkerja","Direktorat Teknologi Informasi dan Komunikasi");
-            values[0].put("jabatan","Pranata Komputer Pertama");
-
-            values[1].put("user","863601110");
-            values[2].put("password","hambali");
-            values[3].put("nip19","198205032009011010");
-            values[4].put("nama","Achmad Hambali");
-            values[5].put("unitkerja","Direktorat Teknologi Informasi dan Komunikasi");
-            values[6].put("jabatan","Pranata Komputer Pertama");
-
-            values[1].put("user","060103804");
-            values[2].put("password","budi");
-            values[3].put("nip19","197804212002121002");
-            values[4].put("nama","Budi Sugiharto");
-            values[5].put("unitkerja","Direktorat Teknologi Informasi dan Komunikasi");
-            values[6].put("jabatan","Pranata Komputer Muda");
+            user[0]= new UserModel(1,"060105300", "alisyahbani", "198405152003121004", "Ikhsan Alisyahbani", "Direktorat Teknologi Informasi dan Komunikasi", "Pranata Komputer Pertama");
+            user[1]= new UserModel(2,"863601110", "hambali", "198205032009011010", "Achmad Hambali", "Direktorat Teknologi Informasi dan Komunikasi", "Pranata Komputer Pertama");
+            user[2]= new UserModel(3,"060103804", "budi", "197804212002121002", "Budi Sugiharto", "Direktorat Teknologi Informasi dan Komunikasi", "Pranata Komputer Muda");
 
             try{
-                for (int i=0; i<values.length; i++)
-                db.insert(userHelper.TABLE_NAME,null,values[0]);
+                for (int j=0; j<user.length; j++)
+                    userHelper.insert(user[j]);
+//                db.insert(userHelper.TABLE_NAME,null,user[j]);
             }
             catch (SQLiteException sqlException) {
                 insertUser=false;

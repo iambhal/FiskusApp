@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import java.util.Map;
 
 import id.go.pajak.fiskusapp.MyXmlPullParser;
 import id.go.pajak.fiskusapp.R;
+import id.go.pajak.fiskusapp.models.UserHelper;
+import id.go.pajak.fiskusapp.models.UserModel;
 
 public class CariPegawaiView extends Fragment {
 
@@ -38,20 +41,25 @@ public class CariPegawaiView extends Fragment {
     String METHOD_NAME = "CekPegawai";
     String SOAP_ACTION = "http://10.245.7.74/ws/tsikkaws.php/CekPegawai";
     String PARAMETER_NAME = "ip";
+    UserModel user;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_cari_pegawai, container, false);
+            final View view = inflater.inflate(R.layout.fragment_cari_pegawai, container, false);
 
             cari = view.findViewById(R.id.btCari);
             txNama = view.findViewById(R.id.txNama);
             txCari = view.findViewById(R.id.txCari);
-
             cari.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    new CallWebService().execute(txCari.getText().toString());
+                    UserHelper userHelper = new UserHelper(view.getContext());
+                    user = userHelper.findUser(txCari.getText().toString());
+                    String hasil = "Data Pegawai<br />Nama: "+user.getNama().toString()+"<br />NIP: "+user.getNip19().toString()+"<br />Jabatan: "+user.getJabatan().toString();
+                    txNama.setText(Html.fromHtml(hasil));
+
+//                    new CallWebService().execute(txCari.getText().toString());
                 }
             });
 

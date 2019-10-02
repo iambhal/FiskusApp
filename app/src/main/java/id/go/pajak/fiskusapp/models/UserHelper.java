@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class UserHelper extends SQLiteOpenHelper {
@@ -91,10 +92,11 @@ public class UserHelper extends SQLiteOpenHelper {
         );
     }
 
-    public UserModel findUser(String id, String key){
+    public UserModel findUser(String key){
         SQLiteDatabase db = getReadableDatabase();
+
         Cursor cursor=db.query(TABLE_NAME, new String[]{KEY_ID,KEY_NIP9,KEY_PASSWORD,KEY_NIP19,KEY_NAMA,KEY_UNITKERJA,KEY_JABATAN},
-                id+"=?", new String[]{String.valueOf(key)},null,null,null);
+                KEY_NIP9+"=?", new String[]{key},null,null,null);
         if(cursor!=null){
             cursor.moveToFirst();
         }
@@ -104,6 +106,7 @@ public class UserHelper extends SQLiteOpenHelper {
                 cursor.getString(3),cursor.getString(4),
                 cursor.getString(5),cursor.getString(6)
         );
+
     }
 
     public List<UserModel> findAll(){
@@ -143,6 +146,22 @@ public class UserHelper extends SQLiteOpenHelper {
         values.put(KEY_JABATAN,User.getJabatan());
 
         db.update(TABLE_NAME, values, KEY_ID+"=?", new String[]{String.valueOf(User.getId())});
+        db.close();
+    }
+
+    public void insert(UserModel User){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values=new ContentValues();
+
+        values.put(KEY_NIP9,User.getNip9());
+        values.put(KEY_PASSWORD,User.getPwd());
+        values.put(KEY_NIP19,User.getNip19());
+        values.put(KEY_NAMA,User.getNama());
+        values.put(KEY_UNITKERJA,User.getUnitkerja());
+        values.put(KEY_JABATAN,User.getJabatan());
+
+        db.insert(TABLE_NAME, null, values);
         db.close();
     }
 
