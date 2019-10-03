@@ -1,6 +1,9 @@
 package id.go.pajak.fiskusapp.models;
 
 public class DetailPenyidikan {
+    public String KEY_kdStatusSidik = "kd_statusSidik";
+    public String KEY_ketStatusSidik = "ketStatusSidik";
+
     private String kdStatusSidik;
     private String ketStatusSidik;
 
@@ -26,6 +29,12 @@ public class DetailPenyidikan {
 
     public void setKetStatusSidik(String ketStatusSidik) {
         this.ketStatusSidik = ketStatusSidik;
+    }
+
+    @Override
+    public String toString() {
+        return "\nDetail Penyidikan" +
+                "\nKeterangan :" + ketStatusSidik+"\n" ;
     }
 }
 

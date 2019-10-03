@@ -1,6 +1,15 @@
 package id.go.pajak.fiskusapp.models;
 
 public class DetailSptT {
+    public String KEY_kdStatusSptT = "kd_statusSPTt";
+    public String KEY_ketStatusSptT = "ketStatusSPTt";
+    public String KEY_dataBpsSpt1 = "dataBpsSPT1";
+    public String KEY_thnSpt1 = "thnSPT1";
+    public String KEY_tglTerimaSpt1 = "tglTerimaSPT1";
+    public String KEY_dataBpsSpt2 = "dataBpsSPT2";
+    public String KEY_thnSpt2 = "thnSPT2";
+    public String KEY_tglTerimaSpt2 = "tglTerimaSPT2";
+
     private String kdStatusSptT;
     private String ketStatusSptT;
     private String dataBpsSpt1;
@@ -88,4 +97,14 @@ public class DetailSptT {
     public void setTglTerimaSpt2(String tglTerimaSpt2) {
         this.tglTerimaSpt2 = tglTerimaSpt2;
     }
+
+    @Override
+    public String toString() {
+        return "\nPelaporan SPT Tahunan" +
+                "\nKepatuhan : " + ketStatusSptT +
+                "\nBPS Tahun Pajak "+thnSpt1+"  : " + dataBpsSpt1 +"("+tglTerimaSpt1+")"+
+                "\nBPS Tahun Pajak "+thnSpt2+"  : " + dataBpsSpt2 +"("+tglTerimaSpt2+")"+"\n";
+
+    }
 }
+

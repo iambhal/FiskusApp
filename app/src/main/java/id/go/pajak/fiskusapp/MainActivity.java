@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = new CariPegawaiView();
+                Fragment fragment = new Fragment();
                 switch (item.getItemId()){
                     case R.id.nav_home:
                         fragment = new CariPegawaiView();

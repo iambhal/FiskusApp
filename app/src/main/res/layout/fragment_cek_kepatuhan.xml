@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
@@ -22,13 +23,13 @@
         <EditText
             android:id="@+id/txCari"
             android:layout_width="181dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="number"
-            android:maxLength="9"
+            android:maxLength="15"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.43"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/tvNIP18"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -60,8 +61,8 @@
 
         <TextView
             android:id="@+id/txNama"
-            android:layout_width="317dp"
-            android:layout_height="336dp"
+            android:layout_width="321dp"
+            android:layout_height="416dp"
             android:layout_marginStart="48dp"
             android:layout_marginTop="28dp"
             android:text="Cek Kepatuhan Wajib Pajak:"

@@ -1,6 +1,14 @@
 package id.go.pajak.fiskusapp.models;
 
 public class DetailKepatuhanWP {
+    public String KEY_KD_STS_SKF= "kd_statusSKF";
+    public String KEY_STS_SKF = "statusSKF";
+    public String KEY_detailWP = "detailWP";
+    public String KEY_detailSptT = "detailSPTt";
+    public String KEY_detailSptM = "detailSPTm";
+    public String KEY_detailUtang = "detailUtang";
+    public String KEY_detailPenyidikan = "detailPenyidikan";
+
     private String kdStatusWP;
     private String statusSKF;
     private DetailWP detailWP = new DetailWP();
@@ -76,5 +84,13 @@ public class DetailKepatuhanWP {
 
     public void setDetailPenyidikan(DetailPenyidikan detailPenyidikan) {
         this.detailPenyidikan = detailPenyidikan;
+    }
+
+    @Override
+    public String toString() {
+        return "\nDetail KepatuhanWP:" +
+                "\nstatus SKF :" + statusSKF +
+                detailWP.toString() + detailSptT.toString() + detailSptM.toString() + detailUtang.toString() + detailPenyidikan.toString();
+
     }
 }

@@ -1,6 +1,12 @@
 package id.go.pajak.fiskusapp.models;
 
 public class DetailWP {
+    public String KEY_kdStatusWP = "kd_statusWP";
+    public String KEY_statusWP = "statusWP";
+    public String KEY_npwp15 = "npwp15";
+    public String KEY_namaWP = "namaWP";
+    public String KEY_tglDaftar = "tglDaftar";
+
     private String kdStatusWP;
     private String statusWP;
     private String npwp15;
@@ -56,5 +62,14 @@ public class DetailWP {
 
     public void setTglDaftar(String tglDaftar) {
         this.tglDaftar = tglDaftar;
+    }
+
+    @Override
+    public String toString() {
+        return "\nInfo WP :\n" +
+                "Status : " + statusWP + "\n" +
+                "NPWP   : " + npwp15 + "\n" +
+                "Nama   : '" + namaWP + "\n" +
+                "Terdaftar : " + tglDaftar +"\n" ;
     }
 }
