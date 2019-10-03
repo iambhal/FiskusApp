@@ -129,7 +129,7 @@ public class CekKepatuhan extends Fragment {
 
                             detailKepatuhanWP.setDetailPenyidikan(detailPenyidikan);
 
-                            Toast.makeText(getView().getContext(), detailKepatuhanWP.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getView().getContext(), "Cek Kepatuhan WP Berhasil", Toast.LENGTH_SHORT).show();
                             tvNama.setText(detailKepatuhanWP.toString());
 
 //                            for (int i = 0; i < array.length(); i++) {
