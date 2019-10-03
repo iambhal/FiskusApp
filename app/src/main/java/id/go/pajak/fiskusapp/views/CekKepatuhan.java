@@ -70,68 +70,69 @@ public class CekKepatuhan extends Fragment {
                     public void onResponse(String response) {
                         try {
                             JSONArray array = new JSONArray(response);
-                            System.out.println(array.toString());
-
-//                            Toast.makeText(getView().getContext(), array.toString(), Toast.LENGTH_SHORT).show();
 
                             JSONObject kepatuhanWp = array.getJSONObject(1);
-
                             DetailKepatuhanWP detailKepatuhanWP = new DetailKepatuhanWP();
-                            detailKepatuhanWP.setKdStatusWP(kepatuhanWp.getString(detailKepatuhanWP.KEY_KD_STS_SKF));
-                            detailKepatuhanWP.setStatusSKF(kepatuhanWp.getString(detailKepatuhanWP.KEY_STS_SKF));
+                            String result = kepatuhanWp.getString(detailKepatuhanWP.KEY_KD_STS_SKF);
+
+                            if("0".equalsIgnoreCase(result)){
+                                Toast.makeText(getView().getContext(), "WP Tidak Diketemukan", Toast.LENGTH_SHORT).show();
+                                tvNama.setText(null);
+                            } else {
+                                detailKepatuhanWP.setKdStatusWP(kepatuhanWp.getString(detailKepatuhanWP.KEY_KD_STS_SKF));
+                                detailKepatuhanWP.setStatusSKF(kepatuhanWp.getString(detailKepatuhanWP.KEY_STS_SKF));
 //
-                            JSONObject detailWp = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailWP);
+                                JSONObject detailWp = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailWP);
 
 
-                            JSONObject detailSptT = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailSptT);
-                            JSONObject detailSptM = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailSptM);
-                            JSONObject detailUtang = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailUtang);
-                            JSONObject detailSidik = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailPenyidikan);
+                                JSONObject detailSptT = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailSptT);
+                                JSONObject detailSptM = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailSptM);
+                                JSONObject detailUtang = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailUtang);
+                                JSONObject detailSidik = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailPenyidikan);
 
-                            DetailWP detailWP = new DetailWP();
-                            detailWP.setKdStatusWP(detailWp.getString(detailWP.KEY_kdStatusWP));
-                            detailWP.setStatusWP(detailWp.getString(detailWP.KEY_statusWP));
-                            detailWP.setNpwp15(detailWp.getString(detailWP.KEY_npwp15));
-                            detailWP.setNamaWP(detailWp.getString(detailWP.KEY_namaWP));
-                            detailWP.setTglDaftar(detailWp.getString(detailWP.KEY_tglDaftar));
+                                DetailWP detailWP = new DetailWP();
+                                detailWP.setKdStatusWP(detailWp.getString(detailWP.KEY_kdStatusWP));
+                                detailWP.setStatusWP(detailWp.getString(detailWP.KEY_statusWP));
+                                detailWP.setNpwp15(detailWp.getString(detailWP.KEY_npwp15));
+                                detailWP.setNamaWP(detailWp.getString(detailWP.KEY_namaWP));
+                                detailWP.setTglDaftar(detailWp.getString(detailWP.KEY_tglDaftar));
 
-                            detailKepatuhanWP.setDetailWP(detailWP);
+                                detailKepatuhanWP.setDetailWP(detailWP);
 
-                            DetailSptT detailSPTT = new DetailSptT();
-                            detailSPTT.setKdStatusSptT(detailSptT.getString(detailSPTT.KEY_kdStatusSptT));
-                            detailSPTT.setKetStatusSptT(detailSptT.getString(detailSPTT.KEY_ketStatusSptT));
-                            detailSPTT.setDataBpsSpt1(detailSptT.getString(detailSPTT.KEY_dataBpsSpt1));
-                            detailSPTT.setDataBpsSpt2(detailSptT.getString(detailSPTT.KEY_dataBpsSpt2));
-                            detailSPTT.setThnSpt1(detailSptT.getString(detailSPTT.KEY_thnSpt1));
-                            detailSPTT.setThnSpt2(detailSptT.getString(detailSPTT.KEY_thnSpt2));
-                            detailSPTT.setTglTerimaSpt1(detailSptT.getString(detailSPTT.KEY_tglTerimaSpt1));
-                            detailSPTT.setTglTerimaSpt2(detailSptT.getString(detailSPTT.KEY_tglTerimaSpt2));
+                                DetailSptT detailSPTT = new DetailSptT();
+                                detailSPTT.setKdStatusSptT(detailSptT.getString(detailSPTT.KEY_kdStatusSptT));
+                                detailSPTT.setKetStatusSptT(detailSptT.getString(detailSPTT.KEY_ketStatusSptT));
+                                detailSPTT.setDataBpsSpt1(detailSptT.getString(detailSPTT.KEY_dataBpsSpt1));
+                                detailSPTT.setDataBpsSpt2(detailSptT.getString(detailSPTT.KEY_dataBpsSpt2));
+                                detailSPTT.setThnSpt1(detailSptT.getString(detailSPTT.KEY_thnSpt1));
+                                detailSPTT.setThnSpt2(detailSptT.getString(detailSPTT.KEY_thnSpt2));
+                                detailSPTT.setTglTerimaSpt1(detailSptT.getString(detailSPTT.KEY_tglTerimaSpt1));
+                                detailSPTT.setTglTerimaSpt2(detailSptT.getString(detailSPTT.KEY_tglTerimaSpt2));
 
-                            detailKepatuhanWP.setDetailSptT(detailSPTT);
+                                detailKepatuhanWP.setDetailSptT(detailSPTT);
 
-                            DetailSptM detailSPTM = new DetailSptM();
-                            detailSPTM.setKdStatusSptM(detailSptM.getString(detailSPTM.KEY_kdStatusSptM));
-                            detailSPTM.setKetStatusSptM(detailSptM.getString(detailSPTM.KEY_ketStatusSptM));
+                                DetailSptM detailSPTM = new DetailSptM();
+                                detailSPTM.setKdStatusSptM(detailSptM.getString(detailSPTM.KEY_kdStatusSptM));
+                                detailSPTM.setKetStatusSptM(detailSptM.getString(detailSPTM.KEY_ketStatusSptM));
 
-                            detailKepatuhanWP.setDetailSptM(detailSPTM);
+                                detailKepatuhanWP.setDetailSptM(detailSPTM);
 
-                            DetailUtang detailUtangWP = new DetailUtang();
-                            detailUtangWP.setKdStatusUtang(detailUtang.getString(detailUtangWP.KEY_kdStatusUtang));
-                            detailUtangWP.setKetStatusUtang(detailUtang.getString(detailUtangWP.KEY_ketStatusUtang));
+                                DetailUtang detailUtangWP = new DetailUtang();
+                                detailUtangWP.setKdStatusUtang(detailUtang.getString(detailUtangWP.KEY_kdStatusUtang));
+                                detailUtangWP.setKetStatusUtang(detailUtang.getString(detailUtangWP.KEY_ketStatusUtang));
 
-                            detailKepatuhanWP.setDetailUtang(detailUtangWP);
+                                detailKepatuhanWP.setDetailUtang(detailUtangWP);
 
-                            DetailPenyidikan detailPenyidikan = new DetailPenyidikan();
-                            detailPenyidikan.setKdStatusSidik(detailSidik.getString(detailPenyidikan.KEY_kdStatusSidik));
-                            detailPenyidikan.setKetStatusSidik(detailSidik.getString(detailPenyidikan.KEY_ketStatusSidik));
+                                DetailPenyidikan detailPenyidikan = new DetailPenyidikan();
+                                detailPenyidikan.setKdStatusSidik(detailSidik.getString(detailPenyidikan.KEY_kdStatusSidik));
+                                detailPenyidikan.setKetStatusSidik(detailSidik.getString(detailPenyidikan.KEY_ketStatusSidik));
 
-                            detailKepatuhanWP.setDetailPenyidikan(detailPenyidikan);
+                                detailKepatuhanWP.setDetailPenyidikan(detailPenyidikan);
 
-                            Toast.makeText(getView().getContext(), "Cek Kepatuhan WP Berhasil", Toast.LENGTH_SHORT).show();
-                            tvNama.setText(detailKepatuhanWP.toString());
+                                Toast.makeText(getView().getContext(), "Cek Kepatuhan WP Berhasil", Toast.LENGTH_SHORT).show();
+                                tvNama.setText(detailKepatuhanWP.toString());
+                            }
 
-
-//                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -27,10 +27,9 @@ import id.go.pajak.fiskusapp.models.DetailProfileWP;
 public class CariWP extends Fragment {
 
     Button cari;
-    TextView tvNpwp,tvNama;
+    TextView tvNpwp, tvNama;
 
-    private String URLstring ="http://10.254.56.99/integrationsvc/index.php/kswpprovider/profile?npwp=";
-    ModelProfileWp modelKepatuhanWP = new ModelProfileWp();
+    private String URLstring = "http://10.254.56.99/integrationsvc/index.php/kswpprovider/profile?npwp=";
 
     @Nullable
     @Override
@@ -50,76 +49,49 @@ public class CariWP extends Fragment {
         return view;
     }
 
-    private void requestJSON(String npwp){
+    private void requestJSON(String npwp) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring+npwp,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring + npwp,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONArray array = new JSONArray(response);
 
-                            JSONObject profileWP = array.getJSONObject(1);
+                            String result = array.getString(0);
+                            if ("0".equalsIgnoreCase(result)) {
+                                Toast.makeText(getView().getContext(), "WP Tidak Diketemukan", Toast.LENGTH_SHORT).show();
+                                tvNama.setText(null);
+                            } else {
 
-                            DetailProfileWP detailProfileWP = new DetailProfileWP();
-                            detailProfileWP.setNPWP(profileWP.getString(detailProfileWP.KEY_NPWP));
-                            detailProfileWP.setNAMA(profileWP.getString(detailProfileWP.KEY_NAMA));
+                                JSONObject profileWP = array.getJSONObject(1);
 
-                            detailKepatuhanWP.setKdStatusWP(kepatuhanWp.getString(detailKepatuhanWP.KEY_KD_STS_SKF));
-                            detailKepatuhanWP.setStatusSKF(kepatuhanWp.getString(detailKepatuhanWP.KEY_STS_SKF));
-//
-                            JSONObject detailWp = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailWP);
+                                DetailProfileWP detailProfileWP = new DetailProfileWP();
+                                detailProfileWP.setNPWP(profileWP.getString(detailProfileWP.KEY_NPWP));
+                                detailProfileWP.setNAMA(profileWP.getString(detailProfileWP.KEY_NAMA));
+                                detailProfileWP.setALAMAT(profileWP.getString(detailProfileWP.KEY_ALAMAT));
+                                detailProfileWP.setKELURAHAN(profileWP.getString(detailProfileWP.KEY_KELURAHAN));
+                                detailProfileWP.setKECAMATAN(profileWP.getString(detailProfileWP.KEY_KECAMATAN));
+                                detailProfileWP.setKABKOT(profileWP.getString(detailProfileWP.KEY_KABKOT));
+                                detailProfileWP.setPROVINSI(profileWP.getString(detailProfileWP.KEY_PROVINSI));
+                                detailProfileWP.setNAMA_KANWIL(profileWP.getString(detailProfileWP.KEY_NAMA_KANWIL));
+                                detailProfileWP.setNAMA_KPP(profileWP.getString(detailProfileWP.KEY_NAMA_KPP));
+                                detailProfileWP.setEMAIL(profileWP.getString(detailProfileWP.KEY_EMAIL));
+                                detailProfileWP.setFAX(profileWP.getString(detailProfileWP.KEY_FAX));
+                                detailProfileWP.setJENIS_WP(profileWP.getString(detailProfileWP.KEY_JENIS_WP));
+                                detailProfileWP.setKODE_KLU(profileWP.getString(detailProfileWP.KEY_KODE_KLU));
+                                detailProfileWP.setKLU(profileWP.getString(detailProfileWP.KEY_KLU));
+                                detailProfileWP.setTGL_DAFTAR(profileWP.getString(detailProfileWP.KEY_TGL_DAFTAR));
+                                detailProfileWP.setSTATUS_PKP(profileWP.getString(detailProfileWP.KEY_STATUS_PKP));
+                                detailProfileWP.setTGL_PENGUKUHAN_PKP(profileWP.getString(detailProfileWP.KEY_TGL_PENGUKUHAN_PKP));
+                                detailProfileWP.setTTL(profileWP.getString(detailProfileWP.KEY_TTL));
+                                detailProfileWP.setBADAN_HUKUM(profileWP.getString(detailProfileWP.KEY_BADAN_HUKUM));
 
-
-                            JSONObject detailSptT = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailSptT);
-                            JSONObject detailSptM = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailSptM);
-                            JSONObject detailUtang = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailUtang);
-                            JSONObject detailSidik = kepatuhanWp.getJSONObject(detailKepatuhanWP.KEY_detailPenyidikan);
-
-                            DetailWP detailWP = new DetailWP();
-                            detailWP.setKdStatusWP(detailWp.getString(detailWP.KEY_kdStatusWP));
-                            detailWP.setStatusWP(detailWp.getString(detailWP.KEY_statusWP));
-                            detailWP.setNpwp15(detailWp.getString(detailWP.KEY_npwp15));
-                            detailWP.setNamaWP(detailWp.getString(detailWP.KEY_namaWP));
-                            detailWP.setTglDaftar(detailWp.getString(detailWP.KEY_tglDaftar));
-
-                            detailKepatuhanWP.setDetailWP(detailWP);
-
-                            DetailSptT detailSPTT = new DetailSptT();
-                            detailSPTT.setKdStatusSptT(detailSptT.getString(detailSPTT.KEY_kdStatusSptT));
-                            detailSPTT.setKetStatusSptT(detailSptT.getString(detailSPTT.KEY_ketStatusSptT));
-                            detailSPTT.setDataBpsSpt1(detailSptT.getString(detailSPTT.KEY_dataBpsSpt1));
-                            detailSPTT.setDataBpsSpt2(detailSptT.getString(detailSPTT.KEY_dataBpsSpt2));
-                            detailSPTT.setThnSpt1(detailSptT.getString(detailSPTT.KEY_thnSpt1));
-                            detailSPTT.setThnSpt2(detailSptT.getString(detailSPTT.KEY_thnSpt2));
-                            detailSPTT.setTglTerimaSpt1(detailSptT.getString(detailSPTT.KEY_tglTerimaSpt1));
-                            detailSPTT.setTglTerimaSpt2(detailSptT.getString(detailSPTT.KEY_tglTerimaSpt2));
-
-                            detailKepatuhanWP.setDetailSptT(detailSPTT);
-
-                            DetailSptM detailSPTM = new DetailSptM();
-                            detailSPTM.setKdStatusSptM(detailSptM.getString(detailSPTM.KEY_kdStatusSptM));
-                            detailSPTM.setKetStatusSptM(detailSptM.getString(detailSPTM.KEY_ketStatusSptM));
-
-                            detailKepatuhanWP.setDetailSptM(detailSPTM);
-
-                            DetailUtang detailUtangWP = new DetailUtang();
-                            detailUtangWP.setKdStatusUtang(detailUtang.getString(detailUtangWP.KEY_kdStatusUtang));
-                            detailUtangWP.setKetStatusUtang(detailUtang.getString(detailUtangWP.KEY_ketStatusUtang));
-
-                            detailKepatuhanWP.setDetailUtang(detailUtangWP);
-
-                            DetailPenyidikan detailPenyidikan = new DetailPenyidikan();
-                            detailPenyidikan.setKdStatusSidik(detailSidik.getString(detailPenyidikan.KEY_kdStatusSidik));
-                            detailPenyidikan.setKetStatusSidik(detailSidik.getString(detailPenyidikan.KEY_ketStatusSidik));
-
-                            detailKepatuhanWP.setDetailPenyidikan(detailPenyidikan);
-
-                            Toast.makeText(getView().getContext(), "Cek Kepatuhan WP Berhasil", Toast.LENGTH_SHORT).show();
-                            tvNama.setText(detailKepatuhanWP.toString());
+                                Toast.makeText(getView().getContext(), "Cek Kepatuhan WP Berhasil", Toast.LENGTH_SHORT).show();
+                                tvNama.setText(detailProfileWP.toString());
 
 
-//                            }
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -141,3 +113,4 @@ public class CariWP extends Fragment {
         requestQueue.add(stringRequest);
 
     }
+}

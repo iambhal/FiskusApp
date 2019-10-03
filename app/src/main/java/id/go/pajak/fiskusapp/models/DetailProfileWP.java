@@ -228,14 +228,12 @@ public class DetailProfileWP {
 
     @Override
     public String toString() {
-        return "\nNPWP :  " + NPWP +
-                "\nStatus NPWP : " + STATUS +
-                "\nNama : " + NAMA +
+        return  "\nNama : " + NAMA +
                 "\nAlamat : " + ALAMAT +
-                "\nKELURAHAN='" + KELURAHAN +
-                "\nKECAMATAN='" + KECAMATAN +
-                "\nKABKOT='" + KABKOT +
-                "\nPROVINSI='" + PROVINSI +
+                "\nKelurahan : " + KELURAHAN +
+                "\nKecamatan : " + KECAMATAN +
+                "\nKabupaten/Kota : " + KABKOT +
+                "\nProvinsi : " + PROVINSI +
                 "\nPekerjaan / Usaha : " + KLU +
                 "\nEmail : " + EMAIL +
                 "\nTempat Tanggal Lahir : " + TTL +
