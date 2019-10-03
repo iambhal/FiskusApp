@@ -61,10 +61,10 @@
 
         <TextView
             android:id="@+id/txNama"
-            android:layout_width="321dp"
-            android:layout_height="416dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="353dp"
+            android:layout_height="430dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
             android:text="Cek Kepatuhan Wajib Pajak:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

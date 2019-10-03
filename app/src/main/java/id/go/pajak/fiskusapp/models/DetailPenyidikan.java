@@ -33,8 +33,7 @@ public class DetailPenyidikan {
 
     @Override
     public String toString() {
-        return "\nDetail Penyidikan" +
-                "\nKeterangan :" + ketStatusSidik+"\n" ;
+        return "\nStatus Penyidikan : " +ketStatusSidik+"\n" ;
     }
 }
 

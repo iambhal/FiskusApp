@@ -40,7 +40,7 @@ public class CekKepatuhan extends Fragment {
     Button cari;
     TextView tvNpwp,tvNama;
 
-    private String URLstring ="http://10.254.56.99/integrationsvc/index.php/kswpprovider/valskfbynpwp?npwp=095802005045000";
+    private String URLstring ="http://10.254.56.99/integrationsvc/index.php/kswpprovider/valskfbynpwp?npwp=";
     ModelKepatuhanWP modelKepatuhanWP = new ModelKepatuhanWP();
 
     @Nullable
@@ -55,10 +55,8 @@ public class CekKepatuhan extends Fragment {
             @Override
             public void onClick(View v) {
                 requestJSON(tvNpwp.getText().toString());
-//                    new CallWebService().execute(txCari.getText().toString());
             }
         });
-        //requestJSON(tvNpwp.getText().toString());
 
         return view;
 
@@ -66,7 +64,7 @@ public class CekKepatuhan extends Fragment {
 
     private void requestJSON(String npwp){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring+npwp,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -132,38 +130,7 @@ public class CekKepatuhan extends Fragment {
                             Toast.makeText(getView().getContext(), "Cek Kepatuhan WP Berhasil", Toast.LENGTH_SHORT).show();
                             tvNama.setText(detailKepatuhanWP.toString());
 
-//                            for (int i = 0; i < array.length(); i++) {
-//                                int value=itemArray.getInt(i);
-//                                Log.e("json", i+"="+value);
-//                            }
-//                            System.out.print(obj.toString());
-//                            if(obj.optString(modelKepatuhanWP.getKdStatus()).equals("1")){
-//
 
-//                                ArrayList<PlayerModel> playersModelArrayList = new ArrayList<>();
-//                                JSONArray dataArray  = obj.getJSONArray("data");
-//
-//                                for (int i = 0; i < dataArray.length(); i++) {
-//
-//                                    PlayerModel playerModel = new PlayerModel();
-//                                    JSONObject dataobj = dataArray.getJSONObject(i);
-//
-//                                    playerModel.setid(dataobj.getString("id"));
-//                                    playerModel.setName(dataobj.getString("name"));
-//                                    playerModel.setCountry(dataobj.getString("country"));
-//                                    playerModel.setCity(dataobj.getString("city"));
-//
-//                                    playersModelArrayList.add(playerModel);
-//
-//                                }
-//
-//                                for (int j = 0; j < playersModelArrayList.size(); j++){
-//                                    textView.setText(textView.getText()+ playersModelArrayList.get(j).getid()+ " "+ playersModelArrayList.get(j).getName()
-//                                            + " "+ playersModelArrayList.get(j).getCountry()+ " "+playersModelArrayList.get(j).getCity()+" \n");
-//                                }
-
-//                            }else {
-////                                Toast.makeText(MainActivity.this, obj.optString("message")+"", Toast.LENGTH_SHORT).show();
 //                            }
 
                         } catch (JSONException e) {

@@ -33,7 +33,6 @@ public class DetailSptM {
 
     @Override
     public String toString() {
-        return "\nPelaporan SPT Masa" +
-                "\nKepatuhan :" + ketStatusSptM +"\n" ;
+        return "\nKepatuhan Pelaporan SPT Masa : " + ketStatusSptM +"\n" ;
     }
 }

@@ -33,7 +33,6 @@ public class DetailUtang {
 
     @Override
     public String toString() {
-        return "\nDetail Utang:\n" +
-                "Keterangan :" + ketStatusUtang+"\n";
+        return "\nStatus Utang : "+ ketStatusUtang+"\n";
     }
 }

@@ -66,10 +66,8 @@ public class DetailWP {
 
     @Override
     public String toString() {
-        return "\nInfo WP :\n" +
-                "Status : " + statusWP + "\n" +
-                "NPWP   : " + npwp15 + "\n" +
-                "Nama   : '" + namaWP + "\n" +
+        return "\nNPWP   : " + npwp15 + "\n" +
+                "Nama   : " + namaWP + "\n" +
                 "Terdaftar : " + tglDaftar +"\n" ;
     }
 }
